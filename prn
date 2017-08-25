@@ -20,22 +20,9 @@ case $PERM in
         ;;
 esac
 #
-# This number is used by the grep command.
-#
-# From: 
-# Manual page grep(1)
-# -A NUM, --after-context=NUM
-#        Print  NUM  lines of trailing context after matching lines.
-#
-A=50
-#
 # Read and write HTML file names to the array
 # 
 readarray farray <<< "$(ls -f *.HTML)"
-# 
-#ls -f *.HTML  > tmp.txt
-#
-#readarray farray < tmp.txt
 #
 # If there is no HTML file in the directory then exit with status 1
 #
@@ -48,11 +35,8 @@ if [ -z $farray ]
                   There is no HTML file in this folder !!!
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-#   rm -r tmp.txt
    exit 1
 fi
-#
-#rm tmp.txt
 #
 # The cycle runs as many HTML files are in the directory
 #
@@ -63,13 +47,6 @@ while [ "z${farray[e]}" != "z" ]
 do
 #
    db=( $(cat ${farray[e]} | grep -a "PROGRAMFUTTAT" -A1 | tail -n1 | cut -d "&" -f1 | cut -d ">" -f3) )
-
-#   readarray parray < piece_tmp.txt # Read and write piece to array
-
-#   rm piece_tmp.txt
-
-#   pdb=`echo ${barray[*]} | wc -w`
-
    pname=( $(echo ${farray[e]} | cut -d "." -f1) )
 
 #
