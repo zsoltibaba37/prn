@@ -22,7 +22,7 @@ esac
 #
 # Read and write HTML file names to the array
 # 
-readarray farray <<< "$(ls -f *.HTML)"
+readarray farray <<< "$(ls -f *.HTML | sort -V)"
 #
 # If there is no HTML file in the directory then exit with status 1
 #
